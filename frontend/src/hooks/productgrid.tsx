@@ -1,16 +1,20 @@
 
 "use client"
 import { useState , useEffect } from 'react';
-import ButtonView from "./button";
+import ButtonView from "../components/button";
 
 export  function ProductCardlist(){
     interface productdetails {
         pid : number,
         imgUrl:string,
-        Name : string
+        Name : string,
+        stock: string,
+        price:string,
+        description:string
     }
 
    const [productsList, setProductList] = useState<productdetails[]>([]);
+   const [isLoading, setisLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async() => {
@@ -22,9 +26,14 @@ export  function ProductCardlist(){
             const result = await response.json();
             console.log(result);
             setProductList(result);
+            //setisLoading(false);
         }
         fetchData();
     }, []);
+
+    if(isLoading){
+        return <div>Loading records.......</div>;
+    }
     return(
         <div>
             <div className="container mx-auto p-6">
@@ -33,22 +42,15 @@ export  function ProductCardlist(){
                             <div key={product.pid} className="overflow-hidden rounded-lg border border-slate-50 bg-white shadow-md">
                                 <img src={`http://localhost:4000/img/${product.imgUrl}`} alt={product.imgUrl} className='h-50 w-full p-4 object-contain' />
                                 <h3 className='mb-2  px-3 font-semibold text-gray-800'>{product.Name}</h3>
-                                
-                                <div className='mx-auto mb-4 w-40 rounded-full bg-blue-500 px-4 py-2 text-white text-center items-center justify-center hover:bg-green-400 hover:text-black hover:font-bold'>
-                                    <button type='button'>View Details</button>
+                                <div className='text-sm font-bold m-4'>
+                                    <p> {product.description}</p>
+                                    <p className='text-green-500'>Price: {product.price}</p>
+                                    <p className='text-red-600'>Stock: {product.stock}</p>
                                 </div>
                             </div>
                         ))}
                     </ul>
             </div>
-        </div>
-    );
-}
-
-export function Singleproductcard(){
-    return(
-        <div>
-
         </div>
     );
 }

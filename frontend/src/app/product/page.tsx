@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import Navbar from "@/components/navbar";
-
+import {ProductCardlist} from "@/hooks/productgrid";
 
 export default function Product() {
   return (
@@ -10,7 +10,7 @@ export default function Product() {
       <Navbar/>
       <main>
         <div>
-          <h1>Product Layout</h1>
+          <ProductCardlist />
         </div>
       </main>
     </div>

@@ -3,20 +3,23 @@ import Image from "next/image";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import {ProductCardlist} from "@/components/productcard";
+import ButtonView from "@/components/button";
+
 
 export default function Home() {
   return (
     
-    <div className="flex flex-min-h flex-col min-h-screen">
+    <div>
       <Header />
       <Navbar />
-      <main className="flex-grow p-4">
-        <div>
-          <ProductCardlist/>
+      <main>
+        <div className="flex flex-col md:flex-row gap-4 p-4">
+            <ButtonView />
         </div>
       </main>
-      <Footer/>
+      <div className="mt-32">
+        <Footer/>
+      </div>
     </div>
   );
 }

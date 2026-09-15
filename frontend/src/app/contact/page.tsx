@@ -9,8 +9,8 @@ export default function Contact() {
     <div>
       <Navbar/>
       <main>
-                <div className="flex flex-grow">
-                  <div className=" m-auto mt-50 w-100 h-100 border-xl bg-slate-0 shadow-md rounded-xl">
+                <div className="flex flex-col md:flex-row gap-4 p-4">
+                  <div className=" m-auto mt-50 w-100 h-100 border-xl bg-slate-50 shadow-md rounded-xl">
                     <h1 className="text-center m-4 p-4 font-bold text-2xl text-red-500">Contact us</h1>
                     <div className="text-center font-bold py-15">
                         <p>Mobile Number: 9816******</p>
