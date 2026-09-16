@@ -2,6 +2,7 @@
 "use client"
 import { useState , useEffect } from 'react';
 import ButtonView from "../components/button";
+import { EmptystateImage } from '@/components/emptyState';
 
 export  function ProductCardlist(){
     interface productdetails {
@@ -26,13 +27,13 @@ export  function ProductCardlist(){
             const result = await response.json();
             console.log(result);
             setProductList(result);
-            //setisLoading(false);
+            setisLoading(false);
         }
         fetchData();
     }, []);
 
     if(isLoading){
-        return <div>Loading records.......</div>;
+        return <EmptystateImage />
     }
     return(
         <div>
